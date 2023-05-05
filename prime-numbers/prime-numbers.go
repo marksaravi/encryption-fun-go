@@ -66,12 +66,12 @@ func init() {
 }
 
 func GetPrimes() (int, int) {
-	i1 := randomGenerator.Intn(len(primeNumbers))
-	i2 := randomGenerator.Intn(len(primeNumbers))
+	i1 := randomGenerator.Intn(len(primeNumbers4Digits))
+	i2 := randomGenerator.Intn(len(primeNumbers4Digits))
 	for i1 == i2 {
-		i2 = randomGenerator.Intn(len(primeNumbers))
+		i2 = randomGenerator.Intn(len(primeNumbers4Digits))
 	}
-	return primeNumbers[i1], primeNumbers[i2]
+	return primeNumbers4Digits[i1], primeNumbers4Digits[i2]
 }
 
 func gcd(a, b int) int {
