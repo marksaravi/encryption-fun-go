@@ -1,4 +1,4 @@
-// package primenumbers
+package primenumbers
 
 // var PrimeNumbers5Digits = []int{
 // 	10007, 10009, 10037, 10039, 10061, 10067, 10069, 10079, 10091, 10093, 10099, 10103, 10111,
