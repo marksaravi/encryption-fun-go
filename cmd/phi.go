@@ -7,9 +7,12 @@ import (
 )
 
 func main() {
-	for i := 1; i <= 36; i++ {
-		coprimes := primenumbers.FindCoprimes(i)
-		// fmt.Printf("%d: %d (%v)\n", i, len(coprimes), coprimes)
-		fmt.Printf("%2d: %2d\n", i, len(coprimes))
-	}
+
+	const P = 61
+	const Q = 53
+
+	LCM := primenumbers.FindLCM(P-1, Q-1)
+	fmt.Println(LCM)
+	coprimes := primenumbers.FindCoprimes(LCM)
+	fmt.Printf("%2d: %2d\n", LCM, coprimes)
 }
