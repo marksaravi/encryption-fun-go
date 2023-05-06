@@ -24,30 +24,10 @@ func GetPrimesPQ() (P int64, Q int64) {
 	return
 }
 
-func gcd(a, b int) int {
-	if a == 0 {
-		return b
-	}
-	return gcd(b%a, a)
-}
+func FindCoprimes(a int) []int {
+	coprimes := make([]int, 0, 1000)
+	for n := 2; n < a; n++ {
 
-// A simple method to evaluate Euler Totient Function
-func Phi(n int) int {
-	var result int = 1
-	for i := 2; i < n; i++ {
-		if gcd(i, n) == 1 {
-			result++
-		}
 	}
-	return result
-}
-
-func NE(p, q int) (int, int) {
-	n := p * q
-	phi := Phi(n)
-	e := randomGenerator.Intn(phi)
-	for e <= 1 {
-		e = randomGenerator.Intn(phi)
-	}
-	return phi, e
+	return coprimes
 }
