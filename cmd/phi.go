@@ -3,20 +3,27 @@ package main
 import (
 	"fmt"
 
-	primenumbers "github.com/marksaravi/encryption-fun-go/prime-numbers"
+	"github.com/marksaravi/encryption-fun-go/mathematics"
 )
 
 func main() {
 
 	const N = 36
 	nCoPrimes := make([]int, 0, N)
+	carmichaels := make([]int, 0, N)
 	// const P = 61
 	// const Q = 53
 
 	for n := 1; n <= N; n++ {
-		coprimes := primenumbers.FindCoprimes(n)
+		coprimes := mathematics.FindCoprimes(n)
 		nCoPrimes = append(nCoPrimes, len(coprimes))
+		c := mathematics.FindCarmichael(n)
+		carmichaels = append(carmichaels, c)
 		fmt.Printf("%3d", n)
+	}
+	fmt.Println()
+	for i := 0; i < N; i++ {
+		fmt.Printf("%3d", carmichaels[i])
 	}
 	fmt.Println()
 	for i := 0; i < N; i++ {

@@ -64,3 +64,33 @@ func ReminderOfPower(m, e, n int) int {
 	}
 	return r
 }
+
+func FindCoprimes(a int) []int {
+	coprimes := make([]int, 0, 1000)
+	coprimes = append(coprimes, 1)
+	for n := 2; n < a; n++ {
+		if GreatestCommonDivisor(a, n) == 1 {
+			coprimes = append(coprimes, n)
+		}
+	}
+	return coprimes
+}
+
+func FindCarmichael(n int) int {
+	coPrimes := FindCoprimes(n)
+	c := 1
+	for m := 1; m < n; m++ {
+		found := true
+		for _, a := range coPrimes {
+			if ReminderOfPower(a, m, n) != 1 {
+				found = false
+				break
+			}
+		}
+		if found {
+			c = m
+			break
+		}
+	}
+	return c
+}
