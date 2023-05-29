@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
+
+	"github.com/marksaravi/encryption-fun-go/mathematics"
 )
 
 var randomSource rand.Source
@@ -29,16 +31,19 @@ func FindCoprimes(a int) []int {
 	coprimes := make([]int, 0, 1000)
 	coprimes = append(coprimes, 1)
 	for n := 2; n < a; n++ {
-		iscoprime := true
-		for p := 0; PrimeNumbers[p] <= n; p++ {
-			if a%PrimeNumbers[p] == 0 && n%PrimeNumbers[p] == 0 {
-				iscoprime = false
-				break
-			}
-		}
-		if iscoprime {
+		if mathematics.GreatestCommonDivisor(a, n) == 1 {
 			coprimes = append(coprimes, n)
 		}
+		// iscoprime := true
+		// for p := 0; PrimeNumbers[p] <= n; p++ {
+		// 	if a%PrimeNumbers[p] == 0 && n%PrimeNumbers[p] == 0 {
+		// 		iscoprime = false
+		// 		break
+		// 	}
+		// }
+		// if iscoprime {
+		// 	coprimes = append(coprimes, n)
+		// }
 	}
 	return coprimes
 }

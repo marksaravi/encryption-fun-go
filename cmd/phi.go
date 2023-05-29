@@ -8,11 +8,19 @@ import (
 
 func main() {
 
-	const P = 61
-	const Q = 53
+	const N = 36
+	nCoPrimes := make([]int, 0, N)
+	// const P = 61
+	// const Q = 53
 
-	LCM := primenumbers.FindLCM(P-1, Q-1)
-	fmt.Println(LCM)
-	coprimes := primenumbers.FindCoprimes(LCM)
-	fmt.Printf("%2d: %2d\n", LCM, coprimes)
+	for n := 1; n <= N; n++ {
+		coprimes := primenumbers.FindCoprimes(n)
+		nCoPrimes = append(nCoPrimes, len(coprimes))
+		fmt.Printf("%3d", n)
+	}
+	fmt.Println()
+	for i := 0; i < N; i++ {
+		fmt.Printf("%3d", nCoPrimes[i])
+	}
+	fmt.Println()
 }
