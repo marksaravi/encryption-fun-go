@@ -8,6 +8,8 @@ import (
 
 func main() {
 
+	fmt.Println(mathematics.CarmichaelOfPQ(61, 53))
+	fmt.Println()
 	const N = 36
 	nCoPrimes := make([]int, 0, N)
 	carmichaels := make([]int, 0, N)

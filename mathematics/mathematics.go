@@ -94,3 +94,9 @@ func FindCarmichael(n int) int {
 	}
 	return c
 }
+
+func CarmichaelOfPQ(p, q int) int {
+	n1 := p - 1
+	n2 := q - 1
+	return n1 * n2 / GreatestCommonDivisor(n1, n2)
+}
