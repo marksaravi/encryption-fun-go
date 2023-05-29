@@ -31,3 +31,30 @@ func TestReminder(t *testing.T) {
 		}
 	}
 }
+
+func TestLargestCommonFactor(t *testing.T) {
+	var testCases = []struct {
+		a, b, want int
+	}{
+		{
+			a:    49,
+			b:    35,
+			want: 7,
+		},
+		{
+			a: 16, b: 64, want: 16,
+		},
+		{
+			a:    33,
+			b:    44,
+			want: 11,
+		},
+	}
+
+	for _, tc := range testCases {
+		got := mathematics.GreatestCommonDivisor(tc.a, tc.b)
+		if got != tc.want {
+			t.Errorf("expected  %d, got %d", tc.want, got)
+		}
+	}
+}

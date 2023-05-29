@@ -35,3 +35,23 @@ func ReminderOfMultiplications(m []int, n int) int {
 	}
 	return rem
 }
+
+func GreatestCommonDivisor(a, b int) int {
+	n1 := a
+	n2 := b
+
+	for n1 > 1 && n2 > 1 && n1 != n2 {
+		if n1 > n2 {
+			n1, n2 = n2, n1
+		}
+		n2 %= n1
+		n1 -= n2
+	}
+	if n1 == 0 || n1 == n2 {
+		return n2
+	}
+	if n2 == 0 {
+		return n1
+	}
+	return 1
+}
