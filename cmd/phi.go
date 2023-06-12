@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-
+	fmt.Println(mathematics.D(17, 780))
 	fmt.Println(mathematics.CarmichaelOfPQ(61, 53))
 	fmt.Println()
 	const N = 36

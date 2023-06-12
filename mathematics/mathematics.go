@@ -100,3 +100,13 @@ func CarmichaelOfPQ(p, q int) int {
 	n2 := q - 1
 	return n1 * n2 / GreatestCommonDivisor(n1, n2)
 }
+
+func D(a, b int) int {
+	for n := 1; n < 1000; n++ {
+		k := n*b + 1
+		if k%a == 0 {
+			return k / a
+		}
+	}
+	return 0
+}
