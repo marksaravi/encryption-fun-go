@@ -1,9 +1,5 @@
 package mathematics
 
-import (
-	"testing"
-)
-
 func evenArrayCloning(a []int) []int {
 	l := len(a)
 	if l%2 != 0 {
@@ -115,47 +111,18 @@ func D(a, b int) int {
 	return 0
 }
 
-func ModularMultiplicativeInverse(a, b int, tst *testing.T) (int, int, int, int, int) {
+func ModularMultiplicativeInverse(a, b int) (int, int, int, int, int) {
 	gcd := GreatestCommonDivisor(a, b)
-	r0 := a / gcd
-	s0 := 1
-	t0 := 0
-
-	r1 := b / gcd
-	s1 := 0
-	t1 := 1
-
-	for r1 > 0 {
-		q := r0 / r1
-		r := r0 - q*r1
-		s := s0 - q*s1
-		t := t0 - q*t1
-		r0 = r1
-		s0 = s1
-		t0 = t1
-		r1 = r
-		t1 = t
-		s1 = s
-		tst.Logf("%d, %d, %d, %d, %d, %d, %d\n", q, r0, s0, t0, r1, s1, t1)
-	}
-	c0 := s0
-	c1 := t0
-	c2 := s0 + b
-	c3 := t0 - a
-	if s0 < 0 {
-		c0, c2 = c2, c0
-		c1, c3 = c3, c1
-	}
+	c0, c1, c2, c3 := ModularMultiplicativeInverseGCD1(a/gcd, b/gcd)
 	return c0, c1, c2, c3, gcd
 }
 
-func ModularMultiplicativeInverseGCD1(a, b int, tst *testing.T) (int, int, int, int, int) {
-	gcd := GreatestCommonDivisor(a, b)
-	r0 := a / gcd
+func ModularMultiplicativeInverseGCD1(a, b int) (int, int, int, int) {
+	r0 := a
 	s0 := 1
 	t0 := 0
 
-	r1 := b / gcd
+	r1 := b
 	s1 := 0
 	t1 := 1
 
@@ -170,7 +137,6 @@ func ModularMultiplicativeInverseGCD1(a, b int, tst *testing.T) (int, int, int, 
 		r1 = r
 		t1 = t
 		s1 = s
-		tst.Logf("%d, %d, %d, %d, %d, %d, %d\n", q, r0, s0, t0, r1, s1, t1)
 	}
 	c0 := s0
 	c1 := t0
@@ -180,5 +146,5 @@ func ModularMultiplicativeInverseGCD1(a, b int, tst *testing.T) (int, int, int, 
 		c0, c2 = c2, c0
 		c1, c3 = c3, c1
 	}
-	return c0, c1, c2, c3, gcd
+	return c0, c1, c2, c3
 }

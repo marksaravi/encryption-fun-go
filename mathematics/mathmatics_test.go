@@ -101,7 +101,7 @@ func TestModularMultiplicativeInverse(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		c0, c1, c2, c3, gcd := mathematics.ModularMultiplicativeInverse(tc.a, tc.b, t)
+		c0, c1, c2, c3, gcd := mathematics.ModularMultiplicativeInverse(tc.a, tc.b)
 		r0 := c0*tc.a + c1*tc.b
 		r1 := c2*tc.a + c3*tc.b
 		t.Logf("C0: %d, C1: %d, C2: %d, C3: %d\n", c0, c1, c2, c3)
