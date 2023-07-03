@@ -11,14 +11,6 @@ func evenArrayCloning(a []int) []int {
 	return b
 }
 
-// func ReminderOfPower(m, e, n int) int {
-// 	ma := make([]int, e)
-// 	for i := 0; i < e; i++ {
-// 		ma[i] = m
-// 	}
-// 	return ReminderOfMultiplications(ma, n)
-// }
-
 func ReminderOfMultiplications(m []int, n int) int {
 	var rem int = 1
 

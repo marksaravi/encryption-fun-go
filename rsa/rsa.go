@@ -1,11 +1,21 @@
 package rsa
 
-import primenumbers "github.com/marksaravi/encryption-fun-go/prime-numbers"
+import (
+	"fmt"
 
-func generateKeys() int64 {
-	P, Q := primenumbers.GetPrimesPQ()
-	var N int64 = P * Q
-	// n, e := primenumbers.NE(p, q)
+	"github.com/marksaravi/encryption-fun-go/mathematics"
+)
 
-	return N
+func GenerateKeys() (n, publicKey, PrivateKey int) {
+	// P, Q := primenumbers.GetPrimesPQ()
+	P := 61
+	Q := 53
+	var N int = P * Q
+	carmichael := mathematics.CarmichaelOfPQ(P, Q)
+
+	fmt.Println(carmichael)
+	e := 17
+	modularMultiplicativeInverse, _, _, _ := mathematics.ModularMultiplicativeInverseGCD1(17, carmichael)
+
+	return N, e, modularMultiplicativeInverse
 }
