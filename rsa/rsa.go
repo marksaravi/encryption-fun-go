@@ -1,21 +1,30 @@
 package rsa
 
 import (
-	"fmt"
+	"time"
 
 	"github.com/marksaravi/encryption-fun-go/mathematics"
 )
 
-func GenerateKeys() (n, publicKey, PrivateKey int) {
+func GenerateKeys() (n, publicKey, PrivateKey int64) {
 	// P, Q := primenumbers.GetPrimesPQ()
-	P := 61
-	Q := 53
-	var N int = P * Q
+	P := int64(61)
+	Q := int64(53)
+	var N int64 = P * Q
 	carmichael := mathematics.CarmichaelOfPQ(P, Q)
 
-	fmt.Println(carmichael)
-	e := 17
-	modularMultiplicativeInverse, _, _, _ := mathematics.ModularMultiplicativeInverseGCD1(17, carmichael)
+	coPrimes := mathematics.FindCoprimes(carmichael)
+	i := time.Now().Nanosecond() % len(coPrimes)
+	e := coPrimes[i]
+	modularMultiplicativeInverse, _, _, _ := mathematics.ModularMultiplicativeInverseGCD1(e, carmichael)
 
 	return N, e, modularMultiplicativeInverse
+}
+
+func Encrypt(a, PublicKey, N int64) int64 {
+	return mathematics.ReminderOfPower(a, PublicKey, N)
+}
+
+func Decrypt(a, PrivateKey, N int64) int64 {
+	return mathematics.ReminderOfPower(a, PrivateKey, N)
 }

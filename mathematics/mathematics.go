@@ -1,18 +1,7 @@
 package mathematics
 
-func evenArrayCloning(a []int) []int {
-	l := len(a)
-	if l%2 != 0 {
-		l++
-	}
-	b := make([]int, l)
-	b[l-1] = 1
-	copy(b, a)
-	return b
-}
-
-func ReminderOfMultiplications(m []int, n int) int {
-	var rem int = 1
+func ReminderOfMultiplications(m []int64, n int64) int64 {
+	var rem int64 = 1
 
 	for i := 0; i < len(m); i += 2 {
 		k := m[i] * rem
@@ -28,7 +17,7 @@ func ReminderOfMultiplications(m []int, n int) int {
 	return rem
 }
 
-func GreatestCommonDivisor(a, b int) int {
+func GreatestCommonDivisor(a, b int64) int64 {
 	n1 := a
 	n2 := b
 
@@ -48,19 +37,19 @@ func GreatestCommonDivisor(a, b int) int {
 	return 1
 }
 
-func ReminderOfPower(m, e, n int) int {
-	var r int = 1
-	for i := 0; i < e; i++ {
+func ReminderOfPower(m, e, n int64) int64 {
+	var r int64 = 1
+	for i := int64(0); i < e; i++ {
 		r *= m
 		r %= n
 	}
 	return r
 }
 
-func FindCoprimes(a int) []int {
-	coprimes := make([]int, 0, 1000)
+func FindCoprimes(a int64) []int64 {
+	coprimes := make([]int64, 0, 1000)
 	coprimes = append(coprimes, 1)
-	for n := 2; n < a; n++ {
+	for n := int64(2); n < a; n++ {
 		if GreatestCommonDivisor(a, n) == 1 {
 			coprimes = append(coprimes, n)
 		}
@@ -68,10 +57,10 @@ func FindCoprimes(a int) []int {
 	return coprimes
 }
 
-func FindCarmichael(n int) int {
+func FindCarmichael(n int64) int64 {
 	coPrimes := FindCoprimes(n)
-	c := 1
-	for m := 1; m < n; m++ {
+	c := int64(1)
+	for m := int64(1); m < n; m++ {
 		found := true
 		for _, a := range coPrimes {
 			if ReminderOfPower(a, m, n) != 1 {
@@ -87,36 +76,26 @@ func FindCarmichael(n int) int {
 	return c
 }
 
-func CarmichaelOfPQ(p, q int) int {
+func CarmichaelOfPQ(p, q int64) int64 {
 	n1 := p - 1
 	n2 := q - 1
 	return n1 * n2 / GreatestCommonDivisor(n1, n2)
 }
 
-func D(a, b int) int {
-	for n := 1; n < 1000; n++ {
-		k := n*b + 1
-		if k%a == 0 {
-			return k / a
-		}
-	}
-	return 0
-}
-
-func ModularMultiplicativeInverse(a, b int) (int, int, int, int, int) {
+func ModularMultiplicativeInverse(a, b int64) (int64, int64, int64, int64, int64) {
 	gcd := GreatestCommonDivisor(a, b)
 	c0, c1, c2, c3 := ModularMultiplicativeInverseGCD1(a/gcd, b/gcd)
 	return c0, c1, c2, c3, gcd
 }
 
-func ModularMultiplicativeInverseGCD1(a, b int) (int, int, int, int) {
-	r0 := a
-	s0 := 1
-	t0 := 0
+func ModularMultiplicativeInverseGCD1(a, b int64) (int64, int64, int64, int64) {
+	r0 := int64(a)
+	s0 := int64(1)
+	t0 := int64(0)
 
-	r1 := b
-	s1 := 0
-	t1 := 1
+	r1 := int64(b)
+	s1 := int64(0)
+	t1 := int64(1)
 
 	for r1 > 0 {
 		q := r0 / r1
