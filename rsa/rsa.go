@@ -16,8 +16,7 @@ func GenerateKeys() (n, publicKey, PrivateKey int64) {
 	coPrimes := mathematics.FindCoprimes(carmichael)
 	i := time.Now().Nanosecond() % len(coPrimes)
 	e := coPrimes[i]
-	// e := int64(17)
-	modularMultiplicativeInverse, _, _, _ := mathematics.ModularMultiplicativeInverseGCD1(17, carmichael)
+	modularMultiplicativeInverse, _, _, _ := mathematics.ModularMultiplicativeInverseGCD1(e, carmichael)
 
 	return N, e, modularMultiplicativeInverse
 }

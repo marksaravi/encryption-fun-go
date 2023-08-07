@@ -8,11 +8,11 @@ import (
 
 func main() {
 	n, publicKey, privateKey := rsa.GenerateKeys()
-	fmt.Println(n, publicKey, privateKey)
+	fmt.Printf("N: %d\nPublic Key: %d\nPrivate Key: %d\n", n, publicKey, privateKey)
 	a := int64(765)
-	fmt.Println(a)
+	fmt.Printf("Number to Encrypt: %d\n", a)
 	encrypted := rsa.Encrypt(a, publicKey, n)
-	fmt.Println(encrypted)
+	fmt.Printf("Encrypted: %d\n", encrypted)
 	decrypted := rsa.Encrypt(encrypted, privateKey, n)
-	fmt.Println(decrypted)
+	fmt.Printf("Decrypt: %d\n", decrypted)
 }
